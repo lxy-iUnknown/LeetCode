@@ -12,9 +12,9 @@ public class MinimumCashCount {
         if (n < TYPE_A) {
             return 0;
         }
-        int[] dp = new int[n + 1];
-        for (int i = 1; i <= n; i++) {
-            int count = Integer.MAX_VALUE;
+        var dp = new int[n + 1];
+        for (var i = 1; i <= n; i++) {
+            var count = Integer.MAX_VALUE;
             if (i >= TYPE_A) {
                 count = Math.min(count, dp[i - TYPE_A] + 1);
             }
@@ -33,14 +33,14 @@ public class MinimumCashCount {
      * 将空间复杂度由{@link MinimumCashCount#minimumCashCount(int)}的O(n)优化为O(1)
      */
     public static int minimumCashCountCyclicBuffer(int n) {
-        final int SIZE = TYPE_C + 1;
+        final var SIZE = TYPE_C + 1;
 
         if (n < TYPE_A) {
             return 0;
         }
-        int[] dp = new int[SIZE];
-        for (int i = 1; i <= n; i++) {
-            int count = Integer.MAX_VALUE;
+        var dp = new int[SIZE];
+        for (var i = 1; i <= n; i++) {
+            var count = Integer.MAX_VALUE;
             if (i >= TYPE_A) {
                 count = Math.min(count, dp[(i - TYPE_A) % SIZE] + 1);
             }

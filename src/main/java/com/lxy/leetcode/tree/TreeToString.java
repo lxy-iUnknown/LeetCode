@@ -23,7 +23,7 @@ public class TreeToString {
     }
 
     public static String tree2str(TreeNode root) {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         appendNode(root, sb);
         return sb.toString();
     }

@@ -6,11 +6,11 @@ package com.lxy.leetcode.array1d;
 public class IsValidSudoku {
 
     private static boolean isValidRow(char[][] board, int row) {
-        boolean[] counter = new boolean[9];
-        for (int column = 0; column < 9; column++) {
+        var counter = new boolean[9];
+        for (var column = 0; column < 9; column++) {
             // '1' ~ '9' = 48 ~ 57
             // '.' = 46
-            char value = (char) (board[row][column] - '1');
+            var value = (char) (board[row][column] - '1');
             if (value <= 8) {
                 if (counter[value]) {
                     return false;
@@ -23,11 +23,11 @@ public class IsValidSudoku {
     }
 
     private static boolean isValidColumn(char[][] board, int column) {
-        boolean[] counter = new boolean[9];
-        for (int row = 0; row < 9; row++) {
+        var counter = new boolean[9];
+        for (var row = 0; row < 9; row++) {
             // '1' ~ '9' = 48 ~ 57
             // '.' = 46
-            char value = (char) (board[row][column] - '1');
+            var value = (char) (board[row][column] - '1');
             if (value <= 8) {
                 if (counter[value]) {
                     return false;
@@ -40,12 +40,12 @@ public class IsValidSudoku {
     }
 
     private static boolean isValidGrid(char[][] board, int startRow, int startColumn) {
-        boolean[] counter = new boolean[9];
-        for (int row = 0; row < 3; row++) {
-            for (int column = 0; column < 3; column++) {
+        var counter = new boolean[9];
+        for (var row = 0; row < 3; row++) {
+            for (var column = 0; column < 3; column++) {
                 // '1' ~ '9' = 48 ~ 57
                 // '.' = 46
-                char value = (char) (board[startRow + row][startColumn + column] - '1');
+                var value = (char) (board[startRow + row][startColumn + column] - '1');
                 if (value <= 8) {
                     if (counter[value]) {
                         return false;
@@ -59,18 +59,18 @@ public class IsValidSudoku {
     }
 
     public static boolean isValidSudoku(char[][] board) {
-        for (int i = 0; i < 9; i++) {
+        for (var i = 0; i < 9; i++) {
             if (!isValidRow(board, i)) {
                 return false;
             }
         }
-        for (int i = 0; i < 9; i++) {
+        for (var i = 0; i < 9; i++) {
             if (!isValidColumn(board, i)) {
                 return false;
             }
         }
-        for (int row = 0; row < 9; row += 3) {
-            for (int column = 0; column < 9; column += 3) {
+        for (var row = 0; row < 9; row += 3) {
+            for (var column = 0; column < 9; column += 3) {
                 if (!isValidGrid(board, row, column)) {
                     return false;
                 }

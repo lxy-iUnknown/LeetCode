@@ -1,20 +1,20 @@
 package com.lxy.leetcode.string;
 
 /**
- * <a href="https://leetcode.cn/problems/string-to-integer-atoi">字符串转整数</a>
+ * <a href="https://leetcode.cn/problems/string-to-integer-atoi/">字符串转整数</a>
  */
 public class StringToInteger {
     public static int stringToInteger(String s) {
-        final int RADIX = 10;
+        final var RADIX = 10;
         final int MULTIPLY_LIMIT = -214748364; // Integer.MIN_VALUE / RADIX == -Integer.MAX_VALUE / RADIX
 
-        int length = s.length();
-        int result = 0;
-        int i = 0;
-        int limit = -Integer.MAX_VALUE;
-        boolean negative = false;
+        var length = s.length();
+        var result = 0;
+        var i = 0;
+        var limit = -Integer.MAX_VALUE;
+        var negative = false;
         while (i < length) {
-            char ch = s.charAt(i++);
+            var ch = s.charAt(i++);
             if (ch == '-') {
                 limit = Integer.MIN_VALUE;
                 negative = true;
@@ -29,7 +29,7 @@ public class StringToInteger {
             }
         }
         while (i < length) {
-            char digit = (char) (s.charAt(i++) - '0');
+            var digit = (char) (s.charAt(i++) - '0');
             if (digit > RADIX - 1) {
                 break;
             }
@@ -48,14 +48,14 @@ public class StringToInteger {
     }
 
     public static int stringToIntegerOptimized(String s) {
-        final int RADIX = 10;
+        final var RADIX = 10;
 
-        int length = s.length();
-        int result = 0;
-        int i = 0;
-        boolean negative = false;
+        var length = s.length();
+        var result = 0;
+        var i = 0;
+        var negative = false;
         while (i < length) {
-            char ch = s.charAt(i++);
+            var ch = s.charAt(i++);
             if (ch == '-') {
                 negative = true;
                 break;
@@ -69,7 +69,7 @@ public class StringToInteger {
             }
         }
         while (i < length) {
-            char digit = (char) (s.charAt(i++) - '0');
+            var digit = (char) (s.charAt(i++) - '0');
             if (digit > RADIX - 1) {
                 break;
             }

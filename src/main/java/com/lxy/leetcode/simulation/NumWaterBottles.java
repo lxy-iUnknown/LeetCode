@@ -1,13 +1,13 @@
 package com.lxy.leetcode.simulation;
 
 /**
- * <a href="https://leetcode.cn/problems/water-bottles">换水问题</a>
+ * <a href="https://leetcode.cn/problems/water-bottles/">换水问题</a>
  */
 public class NumWaterBottles {
     public static int numWaterBottles(int numBottles, int numExchange) {
-        int total = 0;
-        int numEmptyBottles = 0;
-        for (;;) {
+        var total = 0;
+        var numEmptyBottles = 0;
+        for (; ; ) {
             // Drink water
             total += numBottles;
             numEmptyBottles += numBottles;
@@ -15,8 +15,8 @@ public class NumWaterBottles {
             if (numEmptyBottles < numExchange) {
                 break;
             }
-            int div = numEmptyBottles / numExchange;
-            int rem = numEmptyBottles - div * numExchange;
+            var div = numEmptyBottles / numExchange;
+            var rem = numEmptyBottles - div * numExchange;
             numBottles = div;
             numEmptyBottles = rem;
         }

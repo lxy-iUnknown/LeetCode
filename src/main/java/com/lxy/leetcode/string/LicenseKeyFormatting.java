@@ -17,11 +17,12 @@ public class LicenseKeyFormatting {
     }
 
     public static String licenseKeyFormatting(String s, int k) {
-        int length = s.length();
-        int bufferLength = length * 2 - 1;
-        int i = length - 1, j = bufferLength - 1;
-        int count = 0;
-        char[] buffer = new char[bufferLength];
+        var length = s.length();
+        var bufferLength = length * 2 - 1;
+        var i = length - 1;
+        var j = bufferLength - 1;
+        var count = 0;
+        var buffer = new char[bufferLength];
         outer:
         while (i >= 0) {
             char ch;

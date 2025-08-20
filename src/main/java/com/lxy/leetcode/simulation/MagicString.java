@@ -6,6 +6,7 @@ package com.lxy.leetcode.simulation;
 public class MagicString {
     /**
      * 求神奇字符串1~n的字串中1的个数。方法：<a href="https://leetcode.cn/problems/magical-string/solutions/1938214/by-endlesscheng-z8o1/">双指针</a>
+     *
      * @param n 数据规模n
      * @return 1的个数
      */
@@ -13,14 +14,15 @@ public class MagicString {
         if (n <= 3) {
             return 1;
         }
-        int count = 1;
-        byte[] array = new byte[n];
+        var count = 1;
+        var array = new byte[n];
         array[0] = 1;
         array[1] = 2;
         array[2] = 2;
-        int i = 2, j = 2;
+        var i = 2;
+        var j = 2;
         byte value = 1;
-        for (;;) {
+        for (; ; ) {
             if (j + 1 >= n) {
                 break;
             }
@@ -36,6 +38,6 @@ public class MagicString {
             i++;
             value = (byte) (3 ^ value); // 3 ^ 1 = 2, 3 ^ 2 == 1
         }
-        return  count;
+        return count;
     }
 }

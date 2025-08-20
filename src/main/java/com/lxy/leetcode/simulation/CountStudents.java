@@ -1,11 +1,14 @@
 package com.lxy.leetcode.simulation;
 
+/**
+ * <a href="https://leetcode.cn/problems/number-of-students-unable-to-eat-lunch/">无法吃午餐的学生数量</a>
+ */
 public class CountStudents {
     private static boolean canContinue(int[] students, int[] sandwiches,
                                        int queueHead, int stackTop) {
 
-        int sandwich = sandwiches[stackTop];
-        for (int i = queueHead; i < students.length; i++) {
+        var sandwich = sandwiches[stackTop];
+        for (var i = queueHead; i < students.length; i++) {
             if ((students[i] ^ sandwich) == 0) {
                 return true;
             }
@@ -14,11 +17,12 @@ public class CountStudents {
     }
 
     public static int countStudents(int[] students, int[] sandwiches) {
-        int length = students.length;
-        int stackTop = 0, queueHead = 0;
+        var length = students.length;
+        var stackTop = 0;
+        var queueHead = 0;
         while (stackTop < length && canContinue(students, sandwiches, queueHead, stackTop)) {
-            int student = students[queueHead];
-            int sandwich = sandwiches[stackTop];
+            var student = students[queueHead];
+            var sandwich = sandwiches[stackTop];
             if ((student ^ sandwich) == 0) {
                 // Pop stack
                 stackTop++;
@@ -35,15 +39,16 @@ public class CountStudents {
     }
 
     public static int countStudentsOptimized(int[] students, int[] sandwiches) {
-        int s0 = 0, s1 = 0;
-        for (int student : students) {
+        var s0 = 0;
+        var s1 = 0;
+        for (var student : students) {
             if (student == 0) {
                 s0++;
             } else {
                 s1++;
             }
         }
-        for (int sandwich : sandwiches) {
+        for (var sandwich : sandwiches) {
             if (sandwich == 0 && s0 != 0) {
                 s0--;
             } else if (sandwich == 1 && s1 != 0) {

@@ -3,24 +3,26 @@ package com.lxy.leetcode.tree;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
+/**
+ * <a href="https://leetcode.cn/problems/binary-tree-level-order-traversal/">二叉树的层序遍历</a>
+ */
 public class LevelOrder {
     private static final List<List<Integer>> EMPTY = List.of();
 
-    @SuppressWarnings("DataFlowIssue")
     public static List<List<Integer>> levelOrder(TreeNode root) {
         if (root == null) {
             return EMPTY;
         }
-        ArrayList<List<Integer>> result = new ArrayList<>();
-        Queue<TreeNode> queue = new LinkedList<>();
+        var result = new ArrayList<List<Integer>>();
+        var queue = new LinkedList<TreeNode>();
         queue.add(root);
         while (!queue.isEmpty()) {
-            int length = queue.size();
-            ArrayList<Integer> list = new ArrayList<>(length);
-            for (int i = 0; i < length; i++) {
-                TreeNode node = queue.poll();
+            var length = queue.size();
+            var list = new ArrayList<Integer>(length);
+            for (var i = 0; i < length; i++) {
+                var node = queue.poll();
+                assert node != null;
                 list.add(node.val);
                 if (node.left != null) {
                     queue.add(node.left);

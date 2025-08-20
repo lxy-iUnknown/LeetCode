@@ -1,5 +1,7 @@
 package com.lxy.leetcode.string;
 
+import com.lxy.leetcode.util.MathUtil;
+
 import java.util.ArrayList;
 
 /**
@@ -23,14 +25,14 @@ public class KeyboardRow {
     private static final String[] EMPTY = new String[0];
 
     public static String[] findWords(String[] words) {
-        ArrayList<String> list = new ArrayList<>(words.length);
-        for (String word : words) {
-            int rowPattern = 0;
-            for (int i = 0; i < word.length(); i++) {
+        var list = new ArrayList<String>(words.length);
+        for (var word : words) {
+            var rowPattern = 0;
+            for (var i = 0; i < word.length(); i++) {
                 rowPattern |= ROW_PATTERNS[(word.charAt(i) | 32) /* try convert to lower case */ - 'a'];
             }
             // Row pattern is a power of two
-            if ((rowPattern & (rowPattern - 1)) == 0) {
+            if (MathUtil.isPowerOfTwo(rowPattern)) {
                 list.add(word);
             }
         }

@@ -5,12 +5,12 @@ package com.lxy.leetcode.misc;
  */
 public class Interpret {
     public static String interpret(String command) {
-        int length = command.length();
-        int count = 0;
-        char[] result = new char[length];
-        int i = 0;
+        var length = command.length();
+        var count = 0;
+        var result = new char[length];
+        var i = 0;
         while (i < length) {
-            char ch = command.charAt(i++);
+            var ch = command.charAt(i++);
             switch (ch) {
                 case 'G' -> result[count++] = 'G';
                 case '(' -> {

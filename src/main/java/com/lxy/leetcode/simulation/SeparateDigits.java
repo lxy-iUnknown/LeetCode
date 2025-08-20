@@ -12,11 +12,11 @@ public class SeparateDigits {
     private static int appendDigits(int[] digits, int index, int number) {
         final int MAX_DIGIT_COUNT = 10;
 
-        int tempIndex = MAX_DIGIT_COUNT - 1;
-        int[] tempDigits = new int[MAX_DIGIT_COUNT];
+        var tempIndex = MAX_DIGIT_COUNT - 1;
+        var tempDigits = new int[MAX_DIGIT_COUNT];
         // Generate digits in a reversed order
         while (number >= 10) {
-            int temp = number / 10;
+            var temp = number / 10;
             tempDigits[tempIndex--] = number - temp * 10;
             number = temp;
         }
@@ -28,13 +28,12 @@ public class SeparateDigits {
         return index;
     }
 
-    @SuppressWarnings("ForLoopReplaceableByForEach")
     public static int[] separateDigits(int[] numbers) {
-        int length = numbers.length;
-        int[] digits = new int[length * MAX_DIGIT_COUNT];
-        int index = 0;
-        for (int i = 0; i < length; i++) {
-            index = appendDigits(digits, index, numbers[i]);
+        var length = numbers.length;
+        var digits = new int[length * MAX_DIGIT_COUNT];
+        var index = 0;
+        for (int number : numbers) {
+            index = appendDigits(digits, index, number);
         }
         return Arrays.copyOf(digits, index);
     }

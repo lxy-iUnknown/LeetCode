@@ -7,28 +7,21 @@ public class SolveEquation {
     private static final String INFINITE_SOLUTIONS = "Infinite solutions";
     private static final String NO_SOLUTION = "No solution";
 
-    private static class Polynomial {
-        // x系数
-        private int x;
-        // 常数项系数
-        private int c;
-    }
-
     private static void parseAndAccumulate(String s, int start, int end,
                                            boolean negate, Polynomial p) {
-        int i = start;
+        var i = start;
         while (i < end) {
-            int number = 0;
+            var number = 0;
             // 最终的系数是否反号
-            boolean negative = negate;
+            var negative = negate;
             // 之前是否解析过数字（如果解析到x则忽略该标志）
-            boolean hasDigit = false;
+            var hasDigit = false;
             // 之前是否解析过x
-            boolean isX = false;
+            var isX = false;
             // x系数是否为0（如果未解析到x则忽略该标志）
-            boolean isXZero = false;
+            var isXZero = false;
             while (i < end) {
-                char ch = s.charAt(i);
+                var ch = s.charAt(i);
                 if (ch == '+' || ch == '-') {
                     if (hasDigit) {
                         // 如果前一个字符是数字，则表明前一段式子已经解析结束（这种情况不消耗字符）
@@ -47,7 +40,7 @@ public class SolveEquation {
                     break;
                 } else {
                     // 解析到数字
-                    int digit = ch - '0';
+                    var digit = ch - '0';
                     // 判断x系数是否为0
                     isXZero = digit == 0;
                     number = number * 10 + digit;
@@ -74,8 +67,8 @@ public class SolveEquation {
     }
 
     public static String solveEquation(String equation) {
-        int index = equation.indexOf('=');
-        Polynomial p = new Polynomial();
+        var index = equation.indexOf('=');
+        var p = new Polynomial();
         parseAndAccumulate(equation, 0, index, false /* 不变号 */, p);
         parseAndAccumulate(equation, index + 1, equation.length(), true /* 移项变号 */, p);
         // 移项变号
@@ -84,5 +77,12 @@ public class SolveEquation {
             return p.c == 0 ? INFINITE_SOLUTIONS : NO_SOLUTION;
         }
         return p.c % p.x == 0 ? "x=" + p.c / p.x : NO_SOLUTION;
+    }
+
+    private static class Polynomial {
+        // x系数
+        private int x;
+        // 常数项系数
+        private int c;
     }
 }

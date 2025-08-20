@@ -6,12 +6,14 @@ package com.lxy.leetcode.array1d;
 public class MergeSortedArray {
 
     public static void mergeSortedArray(int[] numbers1, int m, int[] numbers2, int n) {
-        int totalLength = m + n;
-        int[] numbers = new int[totalLength];
-        int i = 0, j = 0, k = 0;
+        var totalLength = m + n;
+        var numbers = new int[totalLength];
+        var i = 0;
+        var j = 0;
+        var k = 0;
         while (i < m && j < n) {
-            int number1 = numbers1[i];
-            int number2 = numbers2[j];
+            var number1 = numbers1[i];
+            var number2 = numbers2[j];
             if (number1 < number2) {
                 numbers[k++] = number1;
                 i++;
@@ -32,10 +34,12 @@ public class MergeSortedArray {
 
     // 从后往前遍历
     public static void mergeSortedArrayOptimized(int[] numbers1, int m, int[] numbers2, int n) {
-        int i = m - 1, j = n - 1, k = m + n;
+        var i = m - 1;
+        var j = n - 1;
+        var k = m + n;
         while (i >= 0 && j >= 0) {
-            int number1 = numbers1[i];
-            int number2 = numbers2[j];
+            var number1 = numbers1[i];
+            var number2 = numbers2[j];
             if (number1 > number2) {
                 numbers1[--k] = number1;
                 i--;

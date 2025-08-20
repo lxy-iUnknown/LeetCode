@@ -5,14 +5,9 @@ package com.lxy.leetcode.simulation;
  */
 public class NumberOfBeams {
 
-    private static class DeviceInfo {
-        private int row;
-        private int deviceCount;
-    }
-
     private static int deviceCount(String bankRow) {
-        int count = 0;
-        for (int i = 0; i < bankRow.length(); i++) {
+        var count = 0;
+        for (var i = 0; i < bankRow.length(); i++) {
             // '0' = 48 = 0b110000
             // '1' = 49 = 0b110001
             count += bankRow.charAt(i) & 1;
@@ -21,7 +16,7 @@ public class NumberOfBeams {
     }
 
     private static void nextDeviceInfo(String[] bank, int row, DeviceInfo info) {
-        int deviceCount = 0;
+        var deviceCount = 0;
         while (row < bank.length && (deviceCount = deviceCount(bank[row])) == 0) {
             row++;
         }
@@ -30,11 +25,11 @@ public class NumberOfBeams {
     }
 
     public static int numberOfBeams(String[] bank) {
-        int count = 0;
-        DeviceInfo info = new DeviceInfo();
+        var count = 0;
+        var info = new DeviceInfo();
         nextDeviceInfo(bank, 0, info);
         while (info.row < bank.length) {
-            int oldDeviceCount = info.deviceCount;
+            var oldDeviceCount = info.deviceCount;
             nextDeviceInfo(bank, info.row + 1, info);
             count += info.deviceCount * oldDeviceCount;
         }
@@ -43,11 +38,11 @@ public class NumberOfBeams {
 
     public static int numberOfBeamsSimplified(String[] bank) {
         // 上一个不全为0的行的安全设备个数
-        int last = 0;
-        int result = 0;
+        var last = 0;
+        var result = 0;
         for (String line : bank) {
             // 当前行的安全设备个数
-            int count = deviceCount(line);
+            var count = deviceCount(line);
             if (count != 0) {
                 // 不全为0则更新
                 result += last * count;
@@ -55,5 +50,10 @@ public class NumberOfBeams {
             }
         }
         return result;
+    }
+
+    private static class DeviceInfo {
+        private int row;
+        private int deviceCount;
     }
 }

@@ -5,9 +5,10 @@ package com.lxy.leetcode.string;
  */
 public class ReverseString {
     public static void reverseString(char[] s) {
-        int i = 0, j = s.length - 1;
+        var i = 0;
+        var j = s.length - 1;
         while (i < j) {
-            char ch = s[i];
+            var ch = s[i];
             s[i] = s[j];
             s[j] = ch;
             i++;

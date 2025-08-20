@@ -7,12 +7,12 @@ import java.util.Arrays;
  */
 public class DivideString {
     public static String[] divideString(String s, int k, char fill) {
-        int length = s.length();
-        int count = length / k;
-        int rest = length - count * k;
-        int arraySize = count + (rest == 0 ? 0 : 1);
+        var length = s.length();
+        var count = length / k;
+        var rest = length - count * k;
+        var arraySize = count + (rest == 0 ? 0 : 1);
         // Allocate string array
-        String[] result = new String[arraySize];
+        var result = new String[arraySize];
         int i;
         // Divide string
         for (i = 0; i < count; i++) {
@@ -20,7 +20,7 @@ public class DivideString {
         }
         if (rest != 0) {
             // Allocate character buffer
-            char[] buffer = new char[k];
+            var buffer = new char[k];
             // Copy rest characters
             s.getChars(count * k, length, buffer, 0);
             // Fill with specified character

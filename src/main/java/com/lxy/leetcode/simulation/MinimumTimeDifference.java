@@ -33,9 +33,9 @@ public class MinimumTimeDifference {
     }
 
     public static int findMinDifference(List<String> timePoints) {
-        boolean[] timePointValues = new boolean[COUNT];
+        var timePointValues = new boolean[COUNT];
         for (String timePoint : timePoints) {
-            int index = timePointValue(timePoint);
+            var index = timePointValue(timePoint);
             if (timePointValues[index]) {
                 // Duplicate time point exists
                 return 0;
@@ -43,12 +43,13 @@ public class MinimumTimeDifference {
             timePointValues[index] = true;
         }
         // Here we can ensure that there are at least two different time points
-        int min = COUNT + 1; // Infinity
-        int first = nextOne(timePointValues, 0);
-        int start = first, end;
+        var min = COUNT + 1; // Infinity
+        var first = nextOne(timePointValues, 0);
+        var start = first;
+        int end;
         do {
             end = nextOne(timePointValues, normalize(start + 1));
-            int delta = normalize(end - start);
+            var delta = normalize(end - start);
             if (delta < min) {
                 min = delta;
             }

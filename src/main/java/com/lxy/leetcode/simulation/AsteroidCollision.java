@@ -11,10 +11,10 @@ public class AsteroidCollision {
         if (stack.isEmpty()) {
             stack.push(asteroid);
         } else {
-            int top = stack.peek();
+            var top = stack.peek();
             // Asteroids will probably collide
             if (top > 0 && asteroid < 0) {
-                int temp = -asteroid;
+                var temp = -asteroid;
                 if (top == temp) {
                     // Both old and new asteroid will explode
                     stack.removeTop();
@@ -30,11 +30,11 @@ public class AsteroidCollision {
     }
 
     private static void checkAndPushLoop(IntStack stack, int asteroid) {
-        boolean isAlive = true;
+        var isAlive = true;
         int top;
         while ((isAlive && asteroid < 0) /* Asteroids will probably collide */ &&
                 (!stack.isEmpty() && (top = stack.peek()) > 0)) {
-            int temp = -asteroid;
+            var temp = -asteroid;
             if (top == temp) {
                 // Both old and new asteroid will explode
                 stack.removeTop();
@@ -53,18 +53,18 @@ public class AsteroidCollision {
     }
 
     public static int[] asteroidCollision(int[] asteroids) {
-        int length = asteroids.length;
-        IntStack stack = new IntStack(length) ;
-        for (int asteroid : asteroids) {
+        var length = asteroids.length;
+        var stack = new IntStack(length);
+        for (var asteroid : asteroids) {
             checkAndPush(stack, asteroid);
         }
         return stack.contents();
     }
 
     public static int[] asteroidCollisionLoop(int[] asteroids) {
-        int length = asteroids.length;
-        IntStack stack = new IntStack(length) ;
-        for (int asteroid : asteroids) {
+        var length = asteroids.length;
+        var stack = new IntStack(length);
+        for (var asteroid : asteroids) {
             checkAndPushLoop(stack, asteroid);
         }
         return stack.contents();

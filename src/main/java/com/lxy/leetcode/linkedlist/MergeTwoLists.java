@@ -9,9 +9,10 @@ public class MergeTwoLists {
         if (list2 == null) {
             return list1;
         }
-        ListNode dummy = new ListNode();
-        ListNode node = dummy;
-        ListNode p = list1, q = list2;
+        var dummy = new ListNode();
+        var node = dummy;
+        var p = list1;
+        var q = list2;
         while (p != null && q != null) {
             ListNode temp;
             if (p.val < q.val) {

@@ -28,7 +28,7 @@ public class IntStack {
     }
 
     public int pop() {
-        int value = peek();
+        var value = peek();
         removeTop();
         return value;
     }

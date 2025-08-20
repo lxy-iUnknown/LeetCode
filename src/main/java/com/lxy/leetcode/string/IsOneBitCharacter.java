@@ -5,10 +5,10 @@ package com.lxy.leetcode.string;
  */
 public class IsOneBitCharacter {
     public static boolean isOneBitCharacter(int[] bits) {
-        boolean result = false;
-        int i = 0;
+        var result = false;
+        var i = 0;
         while (i < bits.length) {
-            int bit = bits[i++];
+            var bit = bits[i++];
             if (bit == 0) {
                 // One-bit character
                 result = true;

@@ -10,18 +10,15 @@ import java.util.Queue;
  * Algorithm: <a href="https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/solutions/290289/shou-hui-tu-jie-gei-chu-dfshe-bfsliang-chong-jie-f/">Serialization and deserialization algorithm</a>
  */
 public class TreeNodeCodec {
-    private record SerializedNodes(ArrayList<Integer> list, int end) {
-    }
-
     private static final Integer[] EMPTY = new Integer[0];
 
     private static SerializedNodes serializeInternal(TreeNode root) {
         Objects.requireNonNull(root, "Tree root is null");
-        ArrayList<Integer> list = new ArrayList<>();
-        Queue<TreeNode> queue = new LinkedList<>();
+        var list = new ArrayList<Integer>();
+        var queue = new LinkedList<TreeNode>();
         queue.add(root);
         while (!queue.isEmpty()) {
-            TreeNode node = queue.poll();
+            var node = queue.poll();
             if (node == null) {
                 list.add(null);
             } else {
@@ -30,7 +27,7 @@ public class TreeNodeCodec {
                 queue.add(node.right);
             }
         }
-        int end = list.size();
+        var end = list.size();
         while (--end >= 0) {
             if (list.get(end) != null) {
                 break;
@@ -42,7 +39,7 @@ public class TreeNodeCodec {
     private static void createNode(TreeNode node, Queue<TreeNode> queue,
                                    Integer value, boolean leftOrRight) {
         if (value != null) {
-            TreeNode child = new TreeNode(value);
+            var child = new TreeNode(value);
             if (leftOrRight) {
                 node.left = child;
             } else {
@@ -53,15 +50,15 @@ public class TreeNodeCodec {
     }
 
     private static void deserialize(TreeNode root, Integer... rest) {
-        int length = rest.length;
-        Queue<TreeNode> queue = new LinkedList<>();
-        int index = 0;
+        var length = rest.length;
+        var queue = new LinkedList<TreeNode>();
+        var index = 0;
         queue.add(root);
         for (; ; ) {
             if (queue.isEmpty()) {
                 throw new IllegalArgumentException("Invalid tree element at index " + index);
             }
-            TreeNode node = queue.poll();
+            var node = queue.poll();
             if (index >= length) {
                 break;
             }
@@ -74,7 +71,7 @@ public class TreeNodeCodec {
     }
 
     public static TreeNode deserialize(int first, Integer... rest) {
-        TreeNode root = new TreeNode(first);
+        var root = new TreeNode(first);
         deserialize(root, rest);
         return root;
     }
@@ -90,7 +87,7 @@ public class TreeNodeCodec {
         var end = nodes.end();
         var sb = new StringBuilder();
         sb.append('[');
-        for (int i = 0; i <= end; i++) {
+        for (var i = 0; i <= end; i++) {
             sb.append(list.get(i));
             if (i < end) {
                 sb.append(',').append(' ');
@@ -104,5 +101,8 @@ public class TreeNodeCodec {
         var list = nodes.list();
         list.subList(nodes.end(), list.size()).clear();
         return list.toArray(EMPTY);
+    }
+
+    private record SerializedNodes(ArrayList<Integer> list, int end) {
     }
 }

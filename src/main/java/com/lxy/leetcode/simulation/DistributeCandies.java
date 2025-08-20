@@ -39,20 +39,20 @@ public class DistributeCandies {
      * 每一列的和为c(k + 1) + r * k(k + 1) / 2<br>
      */
     public static int[] distributeCandies(int n, int k) {
-        int[] dist = new int[k];
-        int limit = (int)(-1.0 / 2 + Math.sqrt(2 * n + 1.0 / 4));
-        int round = limit / k;
-        int rest = limit - round * k;
+        var dist = new int[k];
+        var limit = (int) (-1.0 / 2 + Math.sqrt(2 * n + 1.0 / 4));
+        var round = limit / k;
+        var rest = limit - round * k;
         int start;
 
         start = sum(k, round);
-        for (int i = 0; i < rest; i++) {
+        for (var i = 0; i < rest; i++) {
             dist[i] = start;
             n -= start;
             start += round + 1;
         }
         start = sum(k, round - 1) + rest * round;
-        for (int i = rest; i < k; i++) {
+        for (var i = rest; i < k; i++) {
             dist[i] = start;
             n -= start;
             start += round;

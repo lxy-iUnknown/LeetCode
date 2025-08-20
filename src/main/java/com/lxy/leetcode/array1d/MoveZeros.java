@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- * <a href="https://leetcode.cn/problems/move-zeroes">移动零</a>
+ * <a href="https://leetcode.cn/problems/move-zeroes/">移动零</a>
  */
 public class MoveZeros {
 
@@ -23,20 +23,21 @@ public class MoveZeros {
     };
 
     public static void moveZeros(int[] numbers) {
-        int length = numbers.length;
-        Integer[] values = new Integer[length];
-        for (int i = 0; i < length; i++) {
+        var length = numbers.length;
+        var values = new Integer[length];
+        for (var i = 0; i < length; i++) {
             values[i] = numbers[i];
         }
         Arrays.sort(values, 0, length, COMPARATOR);
-        for (int i = 0; i < length; i++) {
+        for (var i = 0; i < length; i++) {
             numbers[i] = values[i];
         }
     }
 
     public static void moveZerosInplace(int[] numbers) {
-        int length = numbers.length;
-        int i = 0, j = 0;
+        var length = numbers.length;
+        var i = 0;
+        var j = 0;
         while (i < length && j < length) {
             if (numbers[j] != 0) {
                 numbers[i] = numbers[j];

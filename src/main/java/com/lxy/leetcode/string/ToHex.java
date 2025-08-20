@@ -11,8 +11,8 @@ public class ToHex {
     public static String toHex(int number) {
         final int MAX_STRING_SIZE = 8;
 
-        char[] buffer = new char[MAX_STRING_SIZE];
-        int index = MAX_STRING_SIZE - 1;
+        var buffer = new char[MAX_STRING_SIZE];
+        var index = MAX_STRING_SIZE - 1;
         // Special case
         if (number == 0) {
             buffer[index--] = '0';

@@ -1,13 +1,13 @@
 package com.lxy.leetcode.array1d;
 
 /**
- * <a href="https://leetcode.cn/problems/search-insert-position">查找插入位置</a>
+ * <a href="https://leetcode.cn/problems/search-insert-position/">查找插入位置</a>
  */
 public class SearchInsert {
     private static int searchInsert(int[] array, int start, int end, int value) {
         if (start <= end) {
-            int mid = (start + end) / 2;
-            int midValue = array[mid];
+            var mid = (start + end) / 2;
+            var midValue = array[mid];
             if (value == midValue) {
                 return mid;
             } else if (value > midValue) {
@@ -25,10 +25,11 @@ public class SearchInsert {
     }
 
     public static int searchInsertNonRecursive(int[] numbers, int target) {
-        int start = 0, end = numbers.length - 1;
+        var start = 0;
+        var end = numbers.length - 1;
         while (start <= end) {
-            int mid = (start + end) / 2;
-            int midValue = numbers[mid];
+            var mid = (start + end) / 2;
+            var midValue = numbers[mid];
             if (target == midValue) {
                 return mid;
             } else if (target > midValue) {

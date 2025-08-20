@@ -1,11 +1,11 @@
 package com.lxy.leetcode.simulation;
 
 /**
- * <a href="https://leetcode.cn/problems/count-operations-to-obtain-zero">得到零的操作数</a>
+ * <a href="https://leetcode.cn/problems/count-operations-to-obtain-zero/">得到零的操作数</a>
  */
 public class CountOperations {
     public static int countOperations(int number1, int number2) {
-        int count = 0;
+        var count = 0;
         while (number1 != 0 && number2 != 0) {
             if (number1 > number2) {
                 number1 -= number2;
@@ -21,14 +21,14 @@ public class CountOperations {
     public static int countOperationsOptimized(int number1, int number2) {
         // Ensure number1 > number2
         if (number1 < number2) {
-            int temp = number1;
+            var temp = number1;
             number1 = number2;
             number2 = temp;
         }
-        int count = 0;
+        var count = 0;
         while (number1 != 0 && number2 != 0) {
-            int div = number1 / number2;
-            int rem = number1 - div * number2;
+            var div = number1 / number2;
+            var rem = number1 - div * number2;
             count += div;
             number1 = number2;
             number2 = rem;

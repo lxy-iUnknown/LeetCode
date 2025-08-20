@@ -2,26 +2,9 @@ package com.lxy.leetcode.util;
 
 import java.util.Objects;
 
-public class NonEmptyIntArray {
-
-    private final int first;
-    private final int[] rest;
-
+public record NonEmptyIntArray(int first, int... rest) {
     public NonEmptyIntArray(int first) {
         this(first, Constants.EMPTY_ARRAY_INT);
-    }
-
-    public NonEmptyIntArray(int first, int... rest) {
-        this.first = first;
-        this.rest = rest;
-    }
-
-    public int first() {
-        return first;
-    }
-
-    public int[] rest() {
-        return rest;
     }
 
     private int getUnchecked(int index) {
@@ -39,10 +22,10 @@ public class NonEmptyIntArray {
 
     @Override
     public String toString() {
-        int iMax = length() - 1;
-        StringBuilder sb = new StringBuilder();
+        var iMax = length() - 1;
+        var sb = new StringBuilder();
         sb.append('[');
-        for (int i = 0; ; i++) {
+        for (var i = 0; ; i++) {
             sb.append(getUnchecked(i));
             if (i == iMax) {
                 return sb.append(']').toString();

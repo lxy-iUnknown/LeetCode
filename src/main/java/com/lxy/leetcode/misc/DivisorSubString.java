@@ -14,13 +14,13 @@ public class DivisorSubString {
             return 1;
         }
         // Save the original number
-        int original = number;
-        int power = POWER_OF_TEN[k];
-        int limit = POWER_OF_TEN[k - 1];
-        int count = 0;
+        var original = number;
+        var power = POWER_OF_TEN[k];
+        var limit = POWER_OF_TEN[k - 1];
+        var count = 0;
         while (number >= limit) {
             // Get substring
-            int substring = number % power;
+            var substring = number % power;
             if (substring != 0 /* Special case */ &&
                     (original % substring) == 0) {
                 count++;

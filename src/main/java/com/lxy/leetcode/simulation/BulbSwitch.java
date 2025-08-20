@@ -16,13 +16,13 @@ public class BulbSwitch {
                 return 1;
             }
             default -> {
-                BitSet bitSet = new BitSet(n);
+                var bitSet = new BitSet(n);
                 // First and second round
-                for (int i = 1; i <= n; i += 2) {
+                for (var i = 1; i <= n; i += 2) {
                     bitSet.set(i - 1);
                 }
-                for (int i = 3; i <= n; i++) {
-                    for (int j = i; j <= n; j += i) {
+                for (var i = 3; i <= n; i++) {
+                    for (var j = i; j <= n; j += i) {
                         bitSet.flip(j - 1);
                     }
                 }
@@ -40,6 +40,7 @@ public class BulbSwitch {
      * 就需要存在某一个k，使得k = n / k（即某一对因数是同一个数），即存在一个数k，使得n = k<sup>2</sup>
      * ，即n是完全平方数。而[1, n]的整数中完全平方数有floor(sqrt(n))个（把[1,
      * floor(sqrt(n))]中的数平方即可得到而[1, n]的整数中的所有完全平方数）
+     *
      * @param n 灯泡数
      * @return 处于打开状态的灯泡数
      */

@@ -11,17 +11,17 @@ public class CalculateTax {
         // Use fixed point arithmetic to improve performance
         // Precondition: 0 <= income <= 1000
         // So result will less than 1000 * 100 = 100000, which will not overflow
-        int result = 0;
-        int[] bracket = brackets[UPPER];
-        int upper = Math.min(income, bracket[UPPER]);
+        var result = 0;
+        var bracket = brackets[UPPER];
+        var upper = Math.min(income, bracket[UPPER]);
         result += upper * bracket[PERCENT];
         income -= upper;
-        for (int i = 1; i < brackets.length; i++) {
+        for (var i = 1; i < brackets.length; i++) {
             if (income <= 0) {
                 break;
             }
             bracket = brackets[i];
-            int delta = Math.min(income, bracket[UPPER] - brackets[i - 1][UPPER]);
+            var delta = Math.min(income, bracket[UPPER] - brackets[i - 1][UPPER]);
             result += delta * bracket[PERCENT];
             income -= delta;
         }

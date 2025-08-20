@@ -10,8 +10,8 @@ public class FractionToDecimal {
     private static String fractionToDecimal(long numerator, long denominator, boolean negative) {
         long quotient, remainder;
 
-        HashMap<Long, Integer> remainderToIndexMap = new HashMap<>();
-        StringBuilder sb = new StringBuilder();
+        var remainderToIndexMap = new HashMap<Long, Integer>();
+        var sb = new StringBuilder();
         quotient = numerator / denominator;
         remainder = numerator - quotient * denominator;
         if (negative) {
@@ -27,8 +27,8 @@ public class FractionToDecimal {
             for (; ; ) {
                 quotient = numerator / denominator;
                 remainder = numerator - quotient * denominator;
-                sb.append((char)(quotient + '0'));
-                Integer temp = remainderToIndexMap.get(remainder);
+                sb.append((char) (quotient + '0'));
+                var temp = remainderToIndexMap.get(remainder);
                 if (temp == null) {
                     // Such remainder does not exist
                     // Record insertion position
@@ -53,8 +53,10 @@ public class FractionToDecimal {
         if (numerator == 0) {
             return "0";
         }
-        return fractionToDecimal(Math.abs((long)numerator),
-                Math.abs((long)denominator),
-                (numerator ^ denominator) < 0);
+        return fractionToDecimal(
+                Math.abs((long) numerator),
+                Math.abs((long) denominator),
+                (numerator ^ denominator) < 0
+        );
     }
 }

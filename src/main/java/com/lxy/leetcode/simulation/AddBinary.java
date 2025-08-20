@@ -1,17 +1,9 @@
 package com.lxy.leetcode.simulation;
 
 /**
- * <a href="https://leetcode.cn/problems/add-binary">二进制求和</a>
+ * <a href="https://leetcode.cn/problems/add-binary/">二进制求和</a>
  */
 public class AddBinary {
-
-    private static class Carry {
-        private int value;
-
-        private boolean hasCarry() {
-            return value != 0;
-        }
-    }
 
     // '0' = 48(0b110000), lowest bit is 0
     // '1' = 49(0b110001), lowest bit is 1
@@ -34,7 +26,7 @@ public class AddBinary {
 
     private static int binaryAddWithCarry(int a, int b, /* ref */ Carry carry) {
         // High bit is carry, low bit is sum
-        int sum = a + b + carry.value;
+        var sum = a + b + carry.value;
         carry.value = sum >>> 1;
         return sum & 1;
     }
@@ -42,7 +34,7 @@ public class AddBinary {
     private static void addRestBinaryDigits(int i, Carry carry, String s, char[] digits) {
         if (carry.hasCarry()) {
             // Perform xxx plus one
-            int k = i--;
+            var k = i--;
             while (i >= 0) {
                 digits[k--] = fromBinaryDigit(binaryAdd(
                         toBinaryDigit(s.charAt(i--)),
@@ -54,16 +46,18 @@ public class AddBinary {
     }
 
     public static String addBinary(String s1, String s2) {
-        int length1 = s1.length();
-        int length2 = s2.length();
-        int newLength = Math.max(length1, length2) + 1;
+        var length1 = s1.length();
+        var length2 = s2.length();
+        var newLength = Math.max(length1, length2) + 1;
 
-        char[] digits = new char[newLength];
-        Carry carry = new Carry();
-        int i = length1, j = length2, k = newLength;
+        var digits = new char[newLength];
+        var carry = new Carry();
+        var i = length1;
+        var j = length2;
+        var k = newLength;
         while (i > 0 && j > 0) {
-            int digit1 = toBinaryDigit(s1.charAt(--i));
-            int digit2 = toBinaryDigit(s2.charAt(--j));
+            var digit1 = toBinaryDigit(s1.charAt(--i));
+            var digit2 = toBinaryDigit(s2.charAt(--j));
             digits[--k] = fromBinaryDigit(binaryAddWithCarry(digit1, digit2, carry));
         }
         if (i > 0) {
@@ -77,6 +71,14 @@ public class AddBinary {
             return new String(digits, 0, newLength);
         } else {
             return new String(digits, 1, newLength - 1);
+        }
+    }
+
+    private static class Carry {
+        private int value;
+
+        private boolean hasCarry() {
+            return value != 0;
         }
     }
 }

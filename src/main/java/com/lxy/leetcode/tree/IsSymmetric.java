@@ -1,5 +1,8 @@
 package com.lxy.leetcode.tree;
 
+/**
+ * <a href="https://leetcode.cn/problems/symmetric-tree/">对称二叉树</a>
+ */
 public class IsSymmetric {
 
     private static boolean isSymmetric(TreeNode left, TreeNode right) {

@@ -5,10 +5,10 @@ package com.lxy.leetcode.misc;
  */
 public class CountAsterisks {
     public static int countAsterisks(String s) {
-        int result = 0;
-        boolean count = true;
-        for (int i = 0; i < s.length(); i++) {
-            char ch = s.charAt(i);
+        var result = 0;
+        var count = true;
+        for (var i = 0; i < s.length(); i++) {
+            var ch = s.charAt(i);
             switch (ch) {
                 case '|' -> count = !count;
                 case '*' -> {

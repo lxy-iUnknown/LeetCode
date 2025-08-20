@@ -10,11 +10,11 @@ import java.util.List;
 public class DestinationCity {
 
     public static String destCity(List<List<String>> paths) {
-        HashMap<String, String> pathMap = new HashMap<>(paths.size());
-        for (List<String> path : paths) {
+        var pathMap = new HashMap<String, String>(paths.size());
+        for (var path : paths) {
             pathMap.put(path.get(0), path.get(1));
         }
-        for (String value : pathMap.values()) {
+        for (var value : pathMap.values()) {
             if (!pathMap.containsKey(value)) {
                 return value;
             }
@@ -24,12 +24,12 @@ public class DestinationCity {
     }
 
     public static String destCityOptimized(List<List<String>> paths) {
-        HashSet<String> sources = new HashSet<>(paths.size());
-        for (List<String> path : paths) {
-            sources.add(path.get(0));
+        var sources = new HashSet<String>(paths.size());
+        for (var path : paths) {
+            sources.add(path.getFirst());
         }
-        for (List<String> path : paths) {
-            String dest = path.get(1);
+        for (var path : paths) {
+            var dest = path.get(1);
             if (!sources.contains(dest)) {
                 return dest;
             }

@@ -8,11 +8,12 @@ public class ExecuteInstructions {
     private static final int Y = 1;
 
     public static int[] executeInstructions(int n, int[] startPos, String s) {
-        char[] operations = s.toCharArray();
-        int length = operations.length;
-        int[] result = new int[length];
-        for (int i = 0; i < length; i++) {
-            int x = startPos[X], y = startPos[Y];
+        var operations = s.toCharArray();
+        var length = operations.length;
+        var result = new int[length];
+        for (var i = 0; i < length; i++) {
+            var x = startPos[X];
+            var y = startPos[Y];
             int j;
             for (j = i; j < length; j++) {
                 switch (operations[j]) {

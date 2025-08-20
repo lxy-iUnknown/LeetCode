@@ -2,6 +2,9 @@ package com.lxy.leetcode.misc;
 
 import java.util.StringJoiner;
 
+/**
+ * <a href="https://leetcode.cn/problems/integer-to-english-words/">整数转换英文表示</a>
+ */
 public class NumberToWords {
 
     private static final String[] WORDS_1_TO_99 = new String[]{
@@ -34,7 +37,7 @@ public class NumberToWords {
 
     private static void appendNumberSegment(StringJoiner sj, int number) {
         if (number >= 100) {
-            int hundreds = number / HUNDRED;
+            var hundreds = number / HUNDRED;
             sj.add(WORDS_1_TO_99[hundreds]).add("Hundred");
             number -= hundreds * HUNDRED;
         }
@@ -48,21 +51,21 @@ public class NumberToWords {
             // Special case
             return "Zero";
         }
-        StringJoiner sj = new StringJoiner(" ");
+        var sj = new StringJoiner(" ");
         if (number >= BILLION) {
-            int billions = number / BILLION;
+            var billions = number / BILLION;
             // 1 <= billions <= 2
             sj.add(billions == 1 ? "One Billion" : "Two Billion");
             number -= billions * BILLION;
         }
         if (number >= MILLION) {
-            int millions = number / MILLION;
+            var millions = number / MILLION;
             appendNumberSegment(sj, millions);
             sj.add("Million");
             number -= millions * MILLION;
         }
         if (number >= THOUSAND) {
-            int thousands = number / THOUSAND;
+            var thousands = number / THOUSAND;
             appendNumberSegment(sj, thousands);
             sj.add("Thousand");
             number -= thousands * THOUSAND;

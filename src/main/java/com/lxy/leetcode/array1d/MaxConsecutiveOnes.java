@@ -19,12 +19,12 @@ public class MaxConsecutiveOnes {
     }
 
     public static int findMaxConsecutiveOnes(int[] numbers) {
-        int max = 0;
-        int length = numbers.length;
-        int start = nextOne(numbers, length, 0);
+        var max = 0;
+        var length = numbers.length;
+        var start = nextOne(numbers, length, 0);
         while (start < length) {
-            int end = nextConsecutiveOnes(numbers, length, start);
-            int oneCount = end - start;
+            var end = nextConsecutiveOnes(numbers, length, start);
+            var oneCount = end - start;
             if (oneCount > max) {
                 max = oneCount;
             }
@@ -34,8 +34,9 @@ public class MaxConsecutiveOnes {
     }
 
     public static int findMaxConsecutiveOnesSimplified(int[] numbers) {
-        int maxOnes = 0, ones = 0;
-        for (int number : numbers) {
+        var maxOnes = 0;
+        var ones = 0;
+        for (var number : numbers) {
             if (number == 1) {
                 ones++;
             } else {

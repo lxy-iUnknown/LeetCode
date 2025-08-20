@@ -1,15 +1,17 @@
 package com.lxy.leetcode.string;
 
+/**
+ * <a href="https://leetcode.cn/problems/adding-spaces-to-a-string/">向字符串添加空格</a>
+ */
 public class AddSpaces {
-    @SuppressWarnings("ForLoopReplaceableByForEach")
     public static String addSpaces(String s, int[] spaces) {
-        int length = s.length();
-        int spaceCount = spaces.length;
-        int totalLength = length + spaceCount;
-        char[] result = new char[totalLength];
-        int srcIndex = 0, destIndex = 0;
-        for (int i = 0; i < spaceCount; i++) {
-            int space = spaces[i];
+        var length = s.length();
+        var spaceCount = spaces.length;
+        var totalLength = length + spaceCount;
+        var result = new char[totalLength];
+        var srcIndex = 0;
+        var destIndex = 0;
+        for (var space : spaces) {
             // Copy characters
             s.getChars(srcIndex, space, result, destIndex);
             destIndex += space - srcIndex;

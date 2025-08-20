@@ -26,8 +26,8 @@ public final class ListNode {
 
     public ListNode(int first, int... rest) {
         this.val = first;
-        ListNode node = this;
-        for (int number : rest) {
+        var node = this;
+        for (var number : rest) {
             node = LinkedListUtil.append(node, number);
         }
     }
@@ -38,7 +38,7 @@ public final class ListNode {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.append("ListNode{val=").append(val).append(", next=");
         if (next == null) {
             sb.append("null");

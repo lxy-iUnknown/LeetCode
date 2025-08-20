@@ -6,11 +6,11 @@ package com.lxy.leetcode.string;
 public class DecryptString {
 
     public static String freqAlphabets(String s) {
-        int length = s.length();
-        StringBuilder sb = new StringBuilder(length);
-        int i = 0;
+        var length = s.length();
+        var sb = new StringBuilder(length);
+        var i = 0;
         while (i < length) {
-            char ch = s.charAt(i++);
+            var ch = s.charAt(i++);
             int delta;
             if (length - i >= 2 && s.charAt(i + 1) == '#') {
                 // Two-digit char

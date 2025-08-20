@@ -11,9 +11,9 @@ public class PascalTriangle {
     private static final List<Integer> PASCAL_1 = List.of(1);
 
     private static Integer[] generateFromPrevious(Integer[] array, int length) {
-        Integer[] newArray = new Integer[length + 1];
+        var newArray = new Integer[length + 1];
         newArray[0] = 1;
-        for (int i = 0; i < length - 1; i++) {
+        for (var i = 0; i < length - 1; i++) {
             newArray[i + 1] = array[i] + array[i + 1];
         }
         newArray[length] = 1;
@@ -21,10 +21,10 @@ public class PascalTriangle {
     }
 
     public static List<List<Integer>> pascalTriangle(int n) {
-        ArrayList<List<Integer>> result = new ArrayList<>(n);
+        var result = new ArrayList<List<Integer>>(n);
         result.add(PASCAL_1);
-        Integer[] array = new Integer[]{1, 1};
-        for (int i = 2; i <= n; i++) {
+        var array = new Integer[]{1, 1};
+        for (var i = 2; i <= n; i++) {
             // Use Arrays.asList instead of List.of,
             // because the latter will copy array contents to make list immutable,
             // which is not needed

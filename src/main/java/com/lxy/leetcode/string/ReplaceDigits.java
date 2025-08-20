@@ -9,13 +9,13 @@ public class ReplaceDigits {
     }
 
     public static String replaceDigits(String s) {
-        int length = s.length();
-        char[] result = new char[length];
+        var length = s.length();
+        var result = new char[length];
         char ch;
-        for (int i = 0; i < length; i += 2) {
+        for (var i = 0; i < length; i += 2) {
             ch = s.charAt(i);
             result[i] = ch;
-            int next = i + 1;
+            var next = i + 1;
             if (next < length) {
                 ch = shift(ch, s.charAt(next) - '0');
                 result[next] = ch;

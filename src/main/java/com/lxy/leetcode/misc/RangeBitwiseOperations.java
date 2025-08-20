@@ -29,6 +29,7 @@ public class RangeBitwiseOperations {
      * x ^ (x - 1) ^ (x - 2) = xxxxxx_10 ^ xxxxxx_01 ^ xxxxxx_00 = xxxxxx_11
      * = xxxxxx_10 + 1 = x + 1（其中xxxxxx为未知的高位部分）<br>
      * 即xorSum(x) = 4k => x, 4k + 1 => 1, 4k + 2 => x + 1, 4k + 3 => 0
+     *
      * @param n 输入参数n
      * @return 计算结果
      */
@@ -45,13 +46,14 @@ public class RangeBitwiseOperations {
      * 设f(left, right) = left & (left + 1) & (left + 2) & ... & right，计算f(left, right)<br>
      * 计算方法：加法运算只影响较低位，因此left、left + 1、left + 2...right可能会有公共前缀。
      * 非公共部分按位与总是0（这些数的非公共部分中每一位都至少会有一个0），因此结果除了公共前缀外其余部分均为0。
-     * @param left 起始值
+     *
+     * @param left  起始值
      * @param right 终止值
      * @return 计算结果
      */
     public static int bitwiseAnd(int left, int right) {
         rangeCheck(left, right);
-        int shift = 0;
+        var shift = 0;
         // 寻找公共前缀
         while (left != right) {
             left >>>= 1;
@@ -66,7 +68,8 @@ public class RangeBitwiseOperations {
      * 设f(left, right) = left & (left + 1) & (left + 2) & ... & right，计算f(left, right)<br>
      * 计算方法：思想和{@link RangeBitwiseOperations#bitwiseAnd(int, int)}相同，只不过通过x & (x - 1)
      * 消去最低位的1。循环终止条件是非公共部分均为0，此时m &ge; n，于是循环条件为m < n。
-     * @param left 起始值
+     *
+     * @param left  起始值
      * @param right 终止值
      * @return 计算结果
      */
@@ -80,6 +83,7 @@ public class RangeBitwiseOperations {
 
     /**
      * Returns floor(log<sub>2</sub>(value)). When input value is 0, 0 is returned
+     *
      * @param value The value.
      * @return floor(log<sub>2</sub>(value))
      */
@@ -96,13 +100,14 @@ public class RangeBitwiseOperations {
      * 2222222101101 —— right<br>
      * 0000000133333 —— left ^ right<br>
      * 设x = floor(log<sub>2</sub>(left ^ right))，则x为非公共部分
-     *（除去非公共部分最高位）的二进制位数<br>
+     * （除去非公共部分最高位）的二进制位数<br>
      * 0000000100000 —— 1 << x<br>
      * 1111111100000 —— -(1 << x)<br>
      * 2222222000000 —— -(1 << x) & left<br>
      * 注：由于left &le; right，因此left的非公共部分最高位一定为0，而right的非公共部分最高位一定为1。
      * "2"和"3"代表任意比特位
-     * @param left 起始值
+     *
+     * @param left  起始值
      * @param right 终止值
      * @return 计算结果
      */
@@ -115,7 +120,8 @@ public class RangeBitwiseOperations {
      * 设f(left, right) = left ^ (left + 1) ^ (left + 2) ^ ... ^ right，计算f(left, right)<br>
      * 计算方法：f(left, right) = (0 ^ 1 ^ ... ^ (left - 1)) ^
      * (0 ^ 1 ^ ... ^ (left - 1) ^ left ^ (left + 1) ^ ... ^ right
-     * @param left 起始值
+     *
+     * @param left  起始值
      * @param right 终止值
      * @return 计算结果
      */

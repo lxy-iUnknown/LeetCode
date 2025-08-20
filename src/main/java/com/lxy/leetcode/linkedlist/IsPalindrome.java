@@ -8,8 +8,9 @@ public class IsPalindrome {
         if (head == null) {
             return true;
         }
-        ListNode slow = head, fast = head;
-        int count = 0;
+        var slow = head;
+        var fast = head;
+        var count = 0;
         // Find middle node of list
         while (fast != null && fast.next != null) {
             // fast is faster than slow, so slow must be non-null
@@ -20,7 +21,7 @@ public class IsPalindrome {
         // Reverse second part of list
         fast = LinkedListUtil.reverseList(slow);
         slow = head;
-        for (int i = 0; i < count; i++) {
+        for (var i = 0; i < count; i++) {
             if (slow.val != fast.val) {
                 return false;
             }

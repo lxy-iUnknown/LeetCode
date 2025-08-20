@@ -12,9 +12,9 @@ public class Construct2DArray {
         if (original.length != m * n) {
             return EMPTY;
         }
-        int[][] array = new int[m][];
-        for (int i = 0; i < m; i++) {
-            int index = i * n;
+        var array = new int[m][];
+        for (var i = 0; i < m; i++) {
+            var index = i * n;
             array[i] = Arrays.copyOfRange(original, index, index + n);
         }
         return array;

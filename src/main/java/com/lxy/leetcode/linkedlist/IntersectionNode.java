@@ -1,9 +1,14 @@
 package com.lxy.leetcode.linkedlist;
 
+/**
+ * <a href="https://leetcode.cn/problems/intersection-of-two-linked-lists/">相交链表</a>
+ */
 public class IntersectionNode {
     public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        int lengthA = 0, lengthB = 0;
-        ListNode a = headA, b = headB;
+        var lengthA = 0;
+        var lengthB = 0;
+        var a = headA;
+        var b = headB;
         while (a != null && b != null) {
             lengthA++;
             lengthB++;
@@ -21,11 +26,11 @@ public class IntersectionNode {
         a = headA;
         b = headB;
         if (lengthA > lengthB) {
-            for (int i = 0; i < lengthA - lengthB; i++) {
+            for (var i = 0; i < lengthA - lengthB; i++) {
                 a = a.next;
             }
         } else {
-            for (int i = 0; i < lengthB - lengthA; i++) {
+            for (var i = 0; i < lengthB - lengthA; i++) {
                 b = b.next;
             }
         }
@@ -44,7 +49,8 @@ public class IntersectionNode {
         if (headA == null || headB == null) {
             return null;
         }
-        ListNode a = headA, b = headB;
+        var a = headA;
+        var b = headB;
         while (a != b) {
             a = a == null ? headB : a.next;
             b = b == null ? headA : b.next;

@@ -26,7 +26,7 @@ public class CuttingRope {
      * 结论一：当各段长度相等时长度最大<br>
      * 证明：设各段长度分别为n<sub>1</sub>，n<sub>2</sub>...n<sub>m</sub>，则
      * n / m = (n<sub>1</sub> + n<sub>2</sub> + ... + n<sub>m</sub>) / m &ge;
-     * root(n<sub>1</sub>n<sub>2</sub>...n<sub>m</sub>, m)，当且仅当
+     * (n<sub>1</sub>n<sub>2</sub>...n<sub>m</sub>)<sup>1 / m</sup>，当且仅当
      * n<sub>1</sub> = n<sub>1</sub> = ... = n<sub>m</sub>时等号成立。<br>
      * 结论二：各段长度应尽可能为3<br>
      * 证明：设绳子按照长度为x均匀分段，则各段乘积f(x) = x<sup>n / x</sup>
@@ -48,7 +48,7 @@ public class CuttingRope {
      * 当b = 0时，结果为3<sup>a</sup><br>
      * 当b = 1时，结果为3<sup>a - 1</sup> * 4<br>
      * 当b = 2时，结果为3<sup>a</sup> * 2<br>
-     * 注：root(x, n)为x开n次根，即x<sup>1 / n</sup>
+     *
      * @param n 绳子长度n
      * @return 各段长度乘积最大值
      */
@@ -60,7 +60,7 @@ public class CuttingRope {
         if (n == 3) {
             return 2; // 1 * 2 because m > 1
         }
-        int x = n / 3;
+        var x = n / 3;
         return switch (n - x * 3) {
             case 0 -> (int) (powerMod3(x) % Constants.MODULO);
             case 1 -> (int) ((powerMod3(x - 1) * 4) % Constants.MODULO);

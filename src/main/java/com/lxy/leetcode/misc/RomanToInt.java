@@ -12,8 +12,9 @@ public class RomanToInt {
     };
 
     public static int romanToInt(String s) {
-        int sum = 0;
-        int prev = 0 /* sentinel */, next;
+        var sum = 0;
+        var prev = 0 /* sentinel */;
+        int next;
         for (int i = s.length() - 1; i >= 0; i--) {
             next = ROMAN[s.charAt(i) - 'C'];
             if (next < prev) {

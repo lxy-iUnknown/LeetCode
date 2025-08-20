@@ -7,18 +7,18 @@ import java.util.Arrays;
  */
 public class ArrayStringsAreEqual {
     private static int totalStringSize(String[] words) {
-        int sum = 0;
-        for (String word : words) {
+        var sum = 0;
+        for (var word : words) {
             sum += word.length();
         }
         return sum;
     }
 
     private static char[] flatten(String[] words, int totalSize) {
-        char[] table = new char[totalSize];
-        int index = 0;
-        for (String word : words) {
-            for (int i = 0; i < word.length(); i++) {
+        var table = new char[totalSize];
+        var index = 0;
+        for (var word : words) {
+            for (var i = 0; i < word.length(); i++) {
                 table[index++] = word.charAt(i);
             }
         }
@@ -26,8 +26,8 @@ public class ArrayStringsAreEqual {
     }
 
     public static boolean arrayStringsAreEqual(String[] word1, String[] word2) {
-        int totalSize1 = totalStringSize(word1);
-        int totalSize2 = totalStringSize(word2);
+        var totalSize1 = totalStringSize(word1);
+        var totalSize2 = totalStringSize(word2);
         if (totalSize1 != totalSize2) {
             return false;
         }
@@ -37,13 +37,15 @@ public class ArrayStringsAreEqual {
     }
 
     public static boolean arrayStringsAreEqualOptimized(String[] word1, String[] word2) {
-        int i = 0, j = 0;
-        int wordI = 0, wordJ = 0;
-        int word1Length = word1.length;
-        int word2Length = word2.length;
+        var i = 0;
+        var j = 0;
+        var wordI = 0;
+        var wordJ = 0;
+        var word1Length = word1.length;
+        var word2Length = word2.length;
         while (wordI < word1Length && wordJ < word2Length) {
-            String word1Item = word1[wordI];
-            String word2Item = word2[wordJ];
+            var word1Item = word1[wordI];
+            var word2Item = word2[wordJ];
             if (word1Item.charAt(i++) != word2Item.charAt(j++)) {
                 return false;
             }

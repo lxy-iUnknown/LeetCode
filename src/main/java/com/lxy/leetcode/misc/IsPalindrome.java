@@ -8,10 +8,10 @@ public class IsPalindrome {
         if (number < 0) {
             return false;
         }
-        long left = number;
-        int right = 0;
+        var left = number;
+        var right = 0;
         while (number > 0) {
-            int temp = number / 10;
+            var temp = number / 10;
             right = right * 10 + number - temp * 10;
             number = temp;
         }
@@ -26,9 +26,9 @@ public class IsPalindrome {
         if ((number % 10) == 0 && (number != 0)) {
             return false;
         }
-        int reversed = 0;
+        var reversed = 0;
         while (number > reversed) {
-            int temp = number / 10;
+            var temp = number / 10;
             reversed = reversed * 10 + number - temp * 10;
             number = temp;
         }

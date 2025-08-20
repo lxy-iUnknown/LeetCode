@@ -7,17 +7,13 @@ import com.lxy.leetcode.util.IntStack;
  */
 public class CalculatePoints {
 
-    @SuppressWarnings("ForLoopReplaceableByForEach")
     public static int calculatePoints(String[] operations) {
-        int length = operations.length;
-        IntStack stack = new IntStack(length);
-        int result = 0;
-        for (int i = 0; i < length; i++) {
-            String operation = operations[i];
+        var length = operations.length;
+        var stack = new IntStack(length);
+        var result = 0;
+        for (String operation : operations) {
             switch (operation.charAt(0)) {
-                case '+' -> {
-                    stack.push(stack.peek() + stack.peekNextTop());
-                }
+                case '+' -> stack.push(stack.peek() + stack.peekNextTop());
                 case 'C' -> stack.pop();
                 case 'D' -> stack.push(2 * stack.peek());
                 default -> stack.push(Integer.parseInt(operation));

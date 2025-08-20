@@ -19,6 +19,7 @@ public class AddDigits {
      * 若n是9的倍数，则数根为9。<br>
      * 即数根=(n-1)%9+1<br>
      * 注：sum表示求和符号<br>
+     *
      * @param number 要计算的数字
      * @return 数字的数根
      */

@@ -1,5 +1,7 @@
 package com.lxy.leetcode.string;
 
+import com.lxy.leetcode.util.SwapUtil;
+
 public class ReverseVowels {
     private static boolean isNonVowel(char ch) {
         final char LOWER_BOUND = 'A';
@@ -23,17 +25,12 @@ public class ReverseVowels {
         return ch < LOWER_BOUND || ((1L << (ch - LOWER_BOUND)) & VOWEL_MASK) == 0;
     }
 
-    private static void swap(char[] array, int a, int b) {
-        char temp = array[a];
-        array[a] = array[b];
-        array[b] = temp;
-    }
-
     public static String reverseVowels(String s) {
-        char[] array = s.toCharArray();
-        int length = array.length;
-        int i = 0, j = length - 1;
-        for (;;) {
+        var array = s.toCharArray();
+        var length = array.length;
+        var i = 0;
+        var j = length - 1;
+        for (; ; ) {
             while (i < length && isNonVowel(array[i])) {
                 i++;
             }
@@ -43,7 +40,7 @@ public class ReverseVowels {
             if (i >= j) {
                 break;
             }
-            swap(array, i++, j--);
+            SwapUtil.swap(array, i++, j--);
         }
         return new String(array, 0, length);
     }

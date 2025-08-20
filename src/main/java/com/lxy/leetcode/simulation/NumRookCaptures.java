@@ -7,7 +7,7 @@ public class NumRookCaptures {
     private static final int BOARD_SIZE = 8;
 
     private static int searchLeftward(char[] rookRows, int rookColumn, int count) {
-        int column = rookColumn;
+        var column = rookColumn;
         exit:
         while (column >= 0) {
             switch (rookRows[column]) {
@@ -25,7 +25,7 @@ public class NumRookCaptures {
     }
 
     private static int searchRightward(char[] rookRows, int rookColumn, int count) {
-        int column = rookColumn;
+        var column = rookColumn;
         exit:
         while (column < BOARD_SIZE) {
             switch (rookRows[column]) {
@@ -43,7 +43,7 @@ public class NumRookCaptures {
     }
 
     private static int searchUpward(char[][] board, int rookRow, int rookColumn, int count) {
-        int row = rookRow;
+        var row = rookRow;
         exit:
         while (row >= 0) {
             switch (board[row][rookColumn]) {
@@ -61,7 +61,7 @@ public class NumRookCaptures {
     }
 
     private static int searchDownward(char[][] board, int rookRow, int rookColumn, int count) {
-        int row = rookRow;
+        var row = rookRow;
         exit:
         while (row < BOARD_SIZE) {
             switch (board[row][rookColumn]) {
@@ -80,9 +80,9 @@ public class NumRookCaptures {
 
     private static int search(char[][] board, int row, int column,
                               int deltaX, int deltaY, int count) {
-        for (int step = 0; ; step++) {
-            int newRow = row + deltaX * step;
-            int newColumn = column + deltaY * step;
+        for (var step = 0; ; step++) {
+            var newRow = row + deltaX * step;
+            var newColumn = column + deltaY * step;
             if (newRow < 0 || newRow >= BOARD_SIZE ||
                     newColumn < 0 || newColumn >= BOARD_SIZE ||
                     board[newRow][newColumn] == 'B') {
@@ -94,8 +94,9 @@ public class NumRookCaptures {
         }
         return count;
     }
+
     public static int numRookCaptures(char[][] board) {
-        int count = 0;
+        var count = 0;
         int row, column = -1;
         // Find rook position
         outer:
@@ -107,7 +108,7 @@ public class NumRookCaptures {
             }
         }
         // Search in four directions
-        char[] rookRow = board[row];
+        var rookRow = board[row];
         count = searchLeftward(rookRow, column, count);
         count = searchRightward(rookRow, column, count);
         count = searchUpward(board, row, column, count);
@@ -117,7 +118,7 @@ public class NumRookCaptures {
 
     // 把四个方向上的代码统一起来，便于扩展
     public static int numRookCapturesExtension(char[][] board) {
-        int count = 0;
+        var count = 0;
         int row, column = -1;
         // Find rook position
         outer:

@@ -6,11 +6,11 @@ package com.lxy.leetcode.simulation;
 public class CreateTargetArray {
 
     public static int[] createTargetArray(int[] numbers, int[] indices) {
-        int length = numbers.length;
-        int[] array = new int[length];
-        int count = 0;
-        for (int i = 0; i < length; i++) {
-            int index = indices[i];
+        var length = numbers.length;
+        var array = new int[length];
+        var count = 0;
+        for (var i = 0; i < length; i++) {
+            var index = indices[i];
             System.arraycopy(array, index, array, index + 1, count - index);
             array[index] = numbers[i];
             count++;

@@ -2,7 +2,6 @@ package com.lxy.leetcode.string;
 
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -11,8 +10,8 @@ import java.util.TreeMap;
 public class LargestWordCount {
 
     private static int wordCount(String message) {
-        int count = 0;
-        int i = 0;
+        var count = 0;
+        var i = 0;
         while (i < message.length()) {
             if (message.charAt(i++) == ' ') {
                 count++;
@@ -22,18 +21,18 @@ public class LargestWordCount {
     }
 
     public static String largestWordCount(String[] messages, String[] senders) {
-        TreeMap<String, Integer> wordCountMap = new TreeMap<>(Comparator.reverseOrder());
-        int n = messages.length;
-        for (int i = 0; i < n; i++) {
+        var wordCountMap = new TreeMap<String, Integer>(Comparator.reverseOrder());
+        var n = messages.length;
+        for (var i = 0; i < n; i++) {
             wordCountMap.merge(senders[i], wordCount(messages[i]), Integer::sum);
         }
-        int max = 0;
-        for (int wordCount : wordCountMap.values()) {
+        var max = 0;
+        for (var wordCount : wordCountMap.values()) {
             if (wordCount > max) {
                 max = wordCount;
             }
         }
-        for (Map.Entry<String, Integer> entry : wordCountMap.entrySet()) {
+        for (var entry : wordCountMap.entrySet()) {
             if (entry.getValue() == max) {
                 return entry.getKey();
             }
@@ -43,16 +42,16 @@ public class LargestWordCount {
     }
 
     public static String largestWordCountOptimized(String[] messages, String[] senders) {
-        HashMap<String, Integer> wordCountMap = new HashMap<>();
-        int n = messages.length;
-        for (int i = 0; i < n; i++) {
+        var wordCountMap = new HashMap<String, Integer>();
+        var n = messages.length;
+        for (var i = 0; i < n; i++) {
             wordCountMap.merge(senders[i], wordCount(messages[i]), Integer::sum);
         }
-        int max = 0;
-        String result = "";
-        for (Map.Entry<String, Integer> entry : wordCountMap.entrySet()) {
-            String sender = entry.getKey();
-            int wordCount = entry.getValue();
+        var max = 0;
+        var result = "";
+        for (var entry : wordCountMap.entrySet()) {
+            var sender = entry.getKey();
+            var wordCount = entry.getValue();
             if (wordCount > max) {
                 max = wordCount;
                 result = sender;

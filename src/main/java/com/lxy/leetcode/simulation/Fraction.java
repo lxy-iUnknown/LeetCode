@@ -10,7 +10,7 @@ public class Fraction {
     private static int gcd(int m, int n) {
         if (m < n) {
             // Use swap instead of recursion
-            int temp = n;
+            var temp = n;
             n = m;
             m = temp;
         }
@@ -19,13 +19,13 @@ public class Fraction {
 
     private static void calculateFraction(int n, int[] fraction) {
         // n + 1/(a / b) = n + b / a = (a * n + b) / a
-        int a = fraction[NUMERATOR];
+        var a = fraction[NUMERATOR];
         fraction[NUMERATOR] = n * a + fraction[DENOMINATOR];
         fraction[DENOMINATOR] = a;
     }
 
     private static void simplify(int[] fraction) {
-        int value = gcd(fraction[NUMERATOR], fraction[DENOMINATOR]);
+        var value = gcd(fraction[NUMERATOR], fraction[DENOMINATOR]);
         if (value != 1) {
             fraction[NUMERATOR] /= value;
             fraction[DENOMINATOR] /= value;
@@ -33,8 +33,8 @@ public class Fraction {
     }
 
     public static int[] fraction(int[] cont) {
-        int i = cont.length - 1;
-        int[] fraction = new int[]{cont[i], 1};
+        var i = cont.length - 1;
+        var fraction = new int[]{cont[i], 1};
         while (--i >= 0) {
             calculateFraction(cont[i], fraction);
         }
@@ -43,8 +43,8 @@ public class Fraction {
     }
 
     public static int[] fractionOptimized(int[] cont) {
-        int i = cont.length - 1;
-        int[] fraction = new int[]{cont[i], 1};
+        var i = cont.length - 1;
+        var fraction = new int[]{cont[i], 1};
         while (--i >= 0) {
             calculateFraction(cont[i], fraction);
         }

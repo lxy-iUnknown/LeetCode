@@ -5,9 +5,9 @@ package com.lxy.leetcode.simulation;
  */
 public class TriangularSum {
     public static int triangularSum(int[] numbers) {
-        int length = numbers.length;
+        var length = numbers.length;
         while (length > 1) {
-            for (int i = 0; i < length - 1; i++) {
+            for (var i = 0; i < length - 1; i++) {
                 numbers[i] = (numbers[i] + numbers[i + 1]) % 10;
             }
             length--;

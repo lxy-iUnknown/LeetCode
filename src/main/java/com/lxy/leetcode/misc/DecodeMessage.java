@@ -6,14 +6,14 @@ package com.lxy.leetcode.misc;
 public class DecodeMessage {
     public static String decodeMessage(String key, String message) {
         // Index to ASCII mapping
-        char[] table = new char[26];
-        int count = 'a';
+        var table = new char[26];
+        var count = 'a';
         // Build mapping table
-        for (int i = 0; i < key.length(); i++) {
+        for (var i = 0; i < key.length(); i++) {
             // ' ' = 32, 'a' ~ 'z' = 97 ~ 122
-            int index = key.charAt(i) - 'a';
+            var index = key.charAt(i) - 'a';
             if (index >= 0 && table[index] == 0 /* mapping not exists */) {
-                table[index] = (char) count++;
+                table[index] = count++;
             }
             // Mapping table is full
             if (count > 'z') {
@@ -21,10 +21,10 @@ public class DecodeMessage {
             }
         }
         // Decode message
-        char[] result = message.toCharArray();
-        int length = result.length;
-        for (int i = 0; i < length; i++) {
-            char ch = result[i];
+        var result = message.toCharArray();
+        var length = result.length;
+        for (var i = 0; i < length; i++) {
+            var ch = result[i];
             if (ch != ' ') {
                 // Use mapping
                 ch = table[ch - 'a'];

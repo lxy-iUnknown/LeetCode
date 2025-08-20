@@ -36,7 +36,7 @@ public class TreeNode {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         sb.append("TreeNode{val=").append(val).append(", left=");
         appendNode(left, sb);
         sb.append(", right=");

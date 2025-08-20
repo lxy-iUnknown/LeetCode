@@ -23,7 +23,7 @@ public class IntToRoman {
     };
 
     public static String intToRoman(int number) {
-        StringBuilder sb = new StringBuilder(MAX_ROMAN_SIZE);
+        var sb = new StringBuilder(MAX_ROMAN_SIZE);
         int temp;
         temp = number / 1000;
         sb.append(ROMAN_THOUSANDS[temp]);

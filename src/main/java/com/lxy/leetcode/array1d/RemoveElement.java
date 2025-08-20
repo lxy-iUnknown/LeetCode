@@ -7,16 +7,16 @@ import java.util.Arrays;
  */
 public class RemoveElement {
     public static int removeElement(int[] numbers, int value) {
-        int length = numbers.length;
+        var length = numbers.length;
         Arrays.sort(numbers, 0, length);
-        int start = 0;
+        var start = 0;
         while (start < length) {
             if (numbers[start] == value) {
                 break;
             }
             start++;
         }
-        int end = start;
+        var end = start;
         while (end < length) {
             if (numbers[end] != value) {
                 break;
@@ -28,10 +28,11 @@ public class RemoveElement {
     }
 
     public static int removeElementOptimized(int[] numbers, int value) {
-        int slow = 0, fast = 0;
-        int length = numbers.length;
+        var slow = 0;
+        var fast = 0;
+        var length = numbers.length;
         while (fast < length) {
-            int number = numbers[fast++];
+            var number = numbers[fast++];
             if (number != value) {
                 numbers[slow++] = number;
             }

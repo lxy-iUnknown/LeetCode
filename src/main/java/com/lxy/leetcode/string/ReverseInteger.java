@@ -1,7 +1,7 @@
 package com.lxy.leetcode.string;
 
 /**
- * <a href="https://leetcode.cn/problems/reverse-integer">整数反转</a>
+ * <a href="https://leetcode.cn/problems/reverse-integer/">整数反转</a>
  */
 public class ReverseInteger {
 
@@ -12,7 +12,7 @@ public class ReverseInteger {
      * @return Reversed number. If overflow occurred, this method will return 0
      */
     public static int reverseInteger(int number) {
-        final int RADIX = 10;
+        final var RADIX = 10;
         final int MAX_DIGIT_COUNT = 10; // Digit count of Integer.MAX_VALUE
         final int MULTIPLY_LIMIT = -214748364; // -Integer.MAX_VALUE / RADIX == Integer.MIN_VALUE / RADIX
 
@@ -21,7 +21,7 @@ public class ReverseInteger {
             return 0;
         }
         int limit;
-        boolean negative = number < 0;
+        var negative = number < 0;
         if (negative) {
             number = -number;
             limit = -Integer.MAX_VALUE;
@@ -29,17 +29,17 @@ public class ReverseInteger {
             limit = Integer.MIN_VALUE;
         }
         // Generate digits in a reversed order
-        int endIndex = MAX_DIGIT_COUNT - 1;
-        byte[] digits = new byte[MAX_DIGIT_COUNT];
+        var endIndex = MAX_DIGIT_COUNT - 1;
+        var digits = new byte[MAX_DIGIT_COUNT];
         while (number != 0) {
-            int temp = number / RADIX;
+            var temp = number / RADIX;
             digits[endIndex--] = (byte) (number - temp * RADIX);
             number = temp;
         }
         // Parse integer in a reversed order
-        int result = 0;
-        for (int index = MAX_DIGIT_COUNT - 1; index > endIndex; index--) {
-            byte digit = digits[index];
+        var result = 0;
+        for (var index = MAX_DIGIT_COUNT - 1; index > endIndex; index--) {
+            var digit = digits[index];
             if (result < MULTIPLY_LIMIT) {
                 return 0;
             }
@@ -53,14 +53,14 @@ public class ReverseInteger {
     }
 
     public static int reverseIntegerOptimized(int number) {
-        final int RADIX = 10;
+        final var RADIX = 10;
 
         final int MULTIPLY_LIMIT_POSITIVE = Integer.MAX_VALUE / RADIX;
         final int MULTIPLY_LIMIT_NEGATIVE = Integer.MIN_VALUE / RADIX;
 
-        int result = 0;
+        var result = 0;
         while (number != 0) {
-            int temp = number / RADIX;
+            var temp = number / RADIX;
             if (result < MULTIPLY_LIMIT_NEGATIVE || result > MULTIPLY_LIMIT_POSITIVE) {
                 return 0;
             }

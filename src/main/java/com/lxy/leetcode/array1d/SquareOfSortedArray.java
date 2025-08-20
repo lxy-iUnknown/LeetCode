@@ -1,12 +1,16 @@
 package com.lxy.leetcode.array1d;
 
+/**
+ * <a href="https://leetcode.cn/problems/squares-of-a-sorted-array/">有序数组的平方</a>
+ */
 public class SquareOfSortedArray {
     private static int firstNonNegativeIndex(int[] numbers, int length) {
         // Simple binary search
-        int low = 0, high = length - 1;
+        var low = 0;
+        var high = length - 1;
         while (low <= high) {
-            int mid = (low + high) / 2;
-            int midValue = numbers[mid];
+            var mid = (low + high) / 2;
+            var midValue = numbers[mid];
             if (midValue < 0) {
                 low = mid + 1;
             } else if (midValue > 0) {
@@ -24,7 +28,7 @@ public class SquareOfSortedArray {
     }
 
     private static int firstNonNegativeIndexLinearSearch(int[] numbers, int length) {
-        for (int i = 0; i < length; i++) {
+        for (var i = 0; i < length; i++) {
             if (numbers[i] >= 0) {
                 return i;
             }
@@ -33,9 +37,10 @@ public class SquareOfSortedArray {
     }
 
     private static int[] sortedSquares(int[] numbers, int length, int index) {
-        int[] result = new int[length];
-        int i = index - 1, j = index;
-        int resultIndex = 0;
+        var result = new int[length];
+        var i = index - 1;
+        var j = index;
+        var resultIndex = 0;
         int positive, negative;
         // Merge two "sorted" parts
         while (i >= 0 && j < length) {
@@ -63,12 +68,12 @@ public class SquareOfSortedArray {
     }
 
     public static int[] sortedSquares(int[] numbers) {
-        int length = numbers.length;
+        var length = numbers.length;
         return sortedSquares(numbers, length, firstNonNegativeIndex(numbers, length));
     }
 
     public static int[] sortedSquaresLinearSearch(int[] numbers) {
-        int length = numbers.length;
+        var length = numbers.length;
         return sortedSquares(numbers, length, firstNonNegativeIndexLinearSearch(numbers, length));
     }
 }

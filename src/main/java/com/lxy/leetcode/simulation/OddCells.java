@@ -1,19 +1,19 @@
 package com.lxy.leetcode.simulation;
 
 /**
- * <a href="https://leetcode.cn/problems/cells-with-odd-values-in-a-matrix">奇数单元格的数量</a>
+ * <a href="https://leetcode.cn/problems/cells-with-odd-values-in-a-matrix/">奇数单元格的数量</a>
  */
 public class OddCells {
     public static int oddCells(int m, int n, int[][] indices) {
-        int[] rows = new int[m];
-        int[] columns = new int[n];
-        for (int[] index : indices) {
+        var rows = new int[m];
+        var columns = new int[n];
+        for (var index : indices) {
             rows[index[0]]++;
             columns[index[1]]++;
         }
-        int count = 0;
-        for (int row = 0; row < m; row++) {
-            for (int column = 0; column < n; column++) {
+        var count = 0;
+        for (var row = 0; row < m; row++) {
+            for (var column = 0; column < n; column++) {
                 if (((rows[row] + columns[column]) % 2) != 0) {
                     count++;
                 }
@@ -23,16 +23,17 @@ public class OddCells {
     }
 
     private static int flipAndChangeCounter(boolean[] isOdd, int index, int counter) {
-        boolean oldValue = isOdd[index];
+        var oldValue = isOdd[index];
         isOdd[index] = !oldValue;
         return counter + (oldValue ? -1 : 1);
     }
 
     public static int oddCellsOptimized(int m, int n, int[][] indices) {
-        boolean[] rowIsOdd = new boolean[m];
-        boolean[] columnIsOdd = new boolean[n];
-        int a = 0, b = 0;
-        for (int[] index : indices) {
+        var rowIsOdd = new boolean[m];
+        var columnIsOdd = new boolean[n];
+        var a = 0;
+        var b = 0;
+        for (var index : indices) {
             a = flipAndChangeCounter(rowIsOdd, index[0], a);
             b = flipAndChangeCounter(columnIsOdd, index[1], b);
         }
@@ -43,7 +44,8 @@ public class OddCells {
     public static int oddCellsOptimizeSize(int m, int n, int[][] indices) {
         long rowIsOdd = 0;
         long columnIsOdd = 0;
-        int a = 0, b = 0;
+        var a = 0;
+        var b = 0;
         for (int[] index : indices) {
             long bitMask;
 

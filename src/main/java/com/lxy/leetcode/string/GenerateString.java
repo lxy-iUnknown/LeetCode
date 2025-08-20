@@ -7,7 +7,7 @@ import java.util.Arrays;
  */
 public class GenerateString {
     public static String generateString(int n) {
-        char[] result = new char[n];
+        var result = new char[n];
         Arrays.fill(result, 0, n, 'a');
         if ((n % 2) == 0) {
             result[n - 1] = 'b';

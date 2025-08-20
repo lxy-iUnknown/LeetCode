@@ -3,7 +3,7 @@ package com.lxy.leetcode.string;
 import java.util.Arrays;
 
 /**
- * <a href="https://leetcode.cn/problems/valid-anagram">有效的字母异位词</a>
+ * <a href="https://leetcode.cn/problems/valid-anagram/">有效的字母异位词</a>
  */
 public class IsAnagram {
     private static int counterIndex(String s, int i) {
@@ -12,8 +12,8 @@ public class IsAnagram {
 
     private static char[] buildCounters(String s) {
         // s.length <= 5 * 10^4
-        char[] counters = new char[26];
-        for (int i = 0; i < s.length(); i++) {
+        var counters = new char[26];
+        for (var i = 0; i < s.length(); i++) {
             counters[counterIndex(s, i)]++;
         }
         return counters;
@@ -26,9 +26,10 @@ public class IsAnagram {
     public static boolean isAnagramOptimized(String s, String t) {
         final int ALPHABET_SIZE = 26;
 
-        int[] counters = new int[ALPHABET_SIZE];
-        int length1 = s.length(), length2 = t.length();
-        int length = Math.min(length1, length2);
+        var counters = new int[ALPHABET_SIZE];
+        var length1 = s.length();
+        var length2 = t.length();
+        var length = Math.min(length1, length2);
         int i;
         for (i = 0; i < length; i++) {
             counters[counterIndex(s, i)]++;

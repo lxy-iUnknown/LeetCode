@@ -6,11 +6,11 @@ package com.lxy.leetcode.simulation;
 public class CanPlaceFlowers {
 
     public static boolean canPlaceFlowers(int[] flowerBed, int n) {
-        int i = 0;
-        int length = flowerBed.length;
+        var i = 0;
+        var length = flowerBed.length;
         while (i < length && n > 0) {
-            int flower = flowerBed[i];
-            int nextFlower = i + 1 >= length ? 0 /* sentinel */ : flowerBed[i + 1];
+            var flower = flowerBed[i];
+            var nextFlower = i + 1 >= length ? 0 /* sentinel */ : flowerBed[i + 1];
             if (flower == 0) {
                 if (nextFlower == 1) {
                     // Move three steps

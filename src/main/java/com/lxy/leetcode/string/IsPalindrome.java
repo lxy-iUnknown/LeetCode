@@ -17,11 +17,12 @@ public class IsPalindrome {
     }
 
     public static boolean isPalindrome(String s) {
-        int length = s.length();
-        int i = 0, j = length - 1;
+        var length = s.length();
+        var i = 0;
+        var j = length - 1;
         while (i < j) {
-            char ch1 = tryChange(s.charAt(i));
-            char ch2 = tryChange(s.charAt(j));
+            var ch1 = tryChange(s.charAt(i));
+            var ch2 = tryChange(s.charAt(j));
             if ((short) ch1 < 0) {
                 i++;
             } else if ((short) ch2 < 0) {

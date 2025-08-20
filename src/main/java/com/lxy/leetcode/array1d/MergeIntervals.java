@@ -26,7 +26,7 @@ public class MergeIntervals {
         //   |       |     |       |   |   |   |      |   |   |   |
         // ------------------->  --------------->  ------------------>
         //  s1,s2  e1/e2  e2/e1   s1  s2  e2  e1     s1  e1  s2  e2
-        int end1 = interval1[END];
+        var end1 = interval1[END];
         if (interval2[START] <= end1) {
             return new int[]{interval1[START], Math.max(end1, interval2[END])};
         }
@@ -34,20 +34,20 @@ public class MergeIntervals {
     }
 
     private static void moveForward(int[][] intervals, int startIndex, int length) {
-        for (int i = startIndex + 1; i < length; i++) {
+        for (var i = startIndex + 1; i < length; i++) {
             intervals[i - 1] = intervals[i];
         }
     }
 
     public static int[][] merge(int[][] intervals) {
-        int length = intervals.length;
+        var length = intervals.length;
         if (length == 1) {
             return intervals;
         }
         Arrays.sort(intervals, Comparator.comparingInt(interval -> interval[START]));
-        int i = 0;
+        var i = 0;
         while (i < length - 1) {
-            int[] merged = tryMerge(intervals[i], intervals[i + 1]);
+            var merged = tryMerge(intervals[i], intervals[i + 1]);
             if (merged == null) {
                 i++;
             } else {
@@ -61,11 +61,11 @@ public class MergeIntervals {
 
     public static int[][] mergeOptimized(int[][] intervals) {
         Arrays.sort(intervals, Comparator.comparingInt(interval1 -> interval1[START]));
-        int count = 0;
-        ArrayList<int[]> merged = new ArrayList<>(32);
+        var count = 0;
+        var merged = new ArrayList<int[]>(32);
         merged.add(intervals[0]);
-        for (int[] interval : intervals) {
-            int[] result = tryMerge(merged.get(count), interval);
+        for (var interval : intervals) {
+            var result = tryMerge(merged.get(count), interval);
             if (result == null) {
                 merged.add(interval);
                 count++;
