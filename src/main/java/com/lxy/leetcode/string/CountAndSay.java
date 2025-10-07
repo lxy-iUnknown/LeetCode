@@ -5,7 +5,7 @@ package com.lxy.leetcode.string;
  */
 public class CountAndSay {
 
-    private static final String[] TABLE = CountAndSayTableGenerator.generate();
+    private static final String[] TABLE = CountAndSayTableGenerator.generate(30);
 
     public static String countAndSay(int n) {
         return TABLE[n - 1];

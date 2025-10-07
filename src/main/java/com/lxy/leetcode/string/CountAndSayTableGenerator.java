@@ -4,7 +4,7 @@ import java.util.stream.Stream;
 
 public class CountAndSayTableGenerator {
 
-    private static String countAndSayNext(String str) {
+    private static String computeNext(String str) {
         var sb = new StringBuilder();
         var start = 0;
         var i = 0;
@@ -20,12 +20,9 @@ public class CountAndSayTableGenerator {
         return sb.toString();
     }
 
-    public static String[] generate() {
-        final var SIZE = 30;
-
-        return Stream.iterate("1",
-                        CountAndSayTableGenerator::countAndSayNext)
-                .limit(SIZE)
+    public static String[] generate(int size) {
+        return Stream.iterate("1", CountAndSayTableGenerator::computeNext)
+                .limit(size)
                 .toArray(String[]::new);
     }
 }
