@@ -12,7 +12,7 @@ public class AtMostNGivenDigitSetTest {
             Arguments.of(new String[]{"7"}, 8, 1),
             Arguments.of(new String[]{"9"}, 8, 0),
             Arguments.of(new String[]{"1", "3", "5", "7"}, 7654, 324),
-            Arguments.of(new String[]{"5","6"}, 19, 2)
+            Arguments.of(new String[]{"5", "6"}, 19, 2)
     };
 
     @ParameterizedTest

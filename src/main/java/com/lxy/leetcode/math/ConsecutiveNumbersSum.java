@@ -26,7 +26,8 @@ public class ConsecutiveNumbersSum {
      * x<sub>1</sub> = (-1 - sqrt(1 + 8n)) / 2 < 0<br>
      * x<sub>2</sub> = (-1 + sqrt(1 + 8n)) / 2 > (-1 + sqrt(1 + 8 * 1)) / 2 = 1 > 0<br>
      * 解得：k < (-1 + sqrt(1 + 8n)) / 2
-     * */
+     *
+     */
     private static int computeMaximumK(int n) {
         // use long to avoid overflow
         return (int) ((-1 + Math.sqrt(1 + 8 * (long) n)) / 2);
@@ -51,7 +52,8 @@ public class ConsecutiveNumbersSum {
      * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= (p - (k - 1)) / 2<br>
      * &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= (p - k + 1) / 2<br>
      * 因此，在2n是k的倍数的情况下，只有p - k为奇数时该方程才有整数解
-     * */
+     *
+     */
     public static int consecutiveNumbersSumOptimized(int n) {
         var sum = 0;
         var maxK = computeMaximumK(n);
@@ -59,7 +61,7 @@ public class ConsecutiveNumbersSum {
         for (var k = 1; k <= maxK; k++) {
             var div = n / k;
             var rem = n - div * k;
-            if (rem == 0 && isOdd(div - k))  {
+            if (rem == 0 && isOdd(div - k)) {
                 sum++;
             }
         }

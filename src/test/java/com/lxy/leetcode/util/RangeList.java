@@ -81,7 +81,7 @@ public class RangeList extends AbstractList<Integer> implements RandomAccess {
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        for (Object e : c) {
+        for (var e : c) {
             if (!contains(e)) {
                 return false;
             }
@@ -109,7 +109,11 @@ public class RangeList extends AbstractList<Integer> implements RandomAccess {
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        throwUnsupported();
+        for (var i = start; i <= end; i++) {
+            if (!c.contains(i)) {
+                throwUnsupported();
+            }
+        }
         return false;
     }
 

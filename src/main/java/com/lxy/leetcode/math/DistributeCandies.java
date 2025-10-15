@@ -52,7 +52,8 @@ public class DistributeCandies {
      * &nbsp;&nbsp;= (3k - n + 1)(3k - n + 2) / 2<br>
      * 情况四：n > 3k<br>
      * 此时有：max(0, n - 2k) - min(k, n) = (n - 2k) - k = n - 3k < 0，此时s = 0
-     * */
+     *
+     */
     public static int distributeCandies(int n, int limit) {
         if (n <= limit) {
             return (n + 1) * (n + 2) / 2;

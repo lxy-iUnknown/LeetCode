@@ -18,6 +18,7 @@ public class CountNumbersWithUniqueDigits {
      * 2. 通过枚举n位数的各个位可知，f(n) = 9 * npr(9, n - 1)<br>
      * 设g(n)为[0, 10<sup>n</sup>)中各位数字都不同的数字的个数，
      * 则g(n) = sum(f(i), i, 1, n) + 1<br>
+     *
      * @param n 整数n
      * @return 各位数字都不同的数字个数
      */

@@ -1,5 +1,8 @@
 package com.lxy.leetcode.math;
 
+/**
+ * <a href="https://leetcode.cn/problems/find-missing-and-repeated-values/description/">找出缺失和重复的数字</a>
+ */
 public class FindMissingAndRepeatedValues {
     public static int[] findMissingAndRepeatedValues(int[][] grid) {
         // 1 + 2 + ... + n = n(n + 1) / 2

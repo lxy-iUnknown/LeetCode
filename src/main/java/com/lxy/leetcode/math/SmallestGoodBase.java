@@ -35,6 +35,7 @@ public class SmallestGoodBase {
      * = n<sup>(m - 2) / (m - 1)</sup>+ ... + n<sup>2 / (m - 1)</sup> + n<sup>1 / (m - 1)</sup> + 1 > 0<br>
      * 所以f(k)在[0, n<sup>1 / (m - 1)</sup>]内存在唯一解<br>
      * 算法：首先遍历m，其次使用二分法判断是否存在另一个较大的m使得f(k)有整数解<br>
+     *
      * @param n 输入的数字
      * @return 最小好进制
      */
@@ -50,8 +51,7 @@ public class SmallestGoodBase {
                 var midValue = radixFunc(midK, m, n);
                 if (midValue == 0) {
                     return midK;
-                }
-                else if (midValue > 0) {
+                } else if (midValue > 0) {
                     endK = midK;
                 } else {
                     startK = midK;

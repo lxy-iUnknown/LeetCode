@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.FieldSource;
 
 public class DistMoneyTest {
-    public static final Arguments[] ARGUMENTS = new Arguments[] {
+    public static final Arguments[] ARGUMENTS = new Arguments[]{
             Arguments.of(23, 2, 1),
             Arguments.of(7, 10, -1),
             Arguments.of(7, 7, 0),

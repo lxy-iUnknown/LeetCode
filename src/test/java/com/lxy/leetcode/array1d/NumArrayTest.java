@@ -29,6 +29,22 @@ public class NumArrayTest {
             numbers -> new NumArray(numbers)::sumRange,
             numbers -> new NumArraySimple(numbers)::sumRange
     };
+    public static final Arguments[] ARGUMENTS =
+            Stream.generate(NumArrayTest::randomArray)
+                    .limit(RANDOM_ITERATION_COUNT)
+                    .flatMap(numbers -> {
+                        var length = numbers.length;
+                        var expected = DEFAULT_FACTORY.create(numbers);
+                        return Arrays.stream(TEST_FACTORIES)
+                                .flatMap(factory -> {
+                                    var actual = factory.create(numbers);
+                                    return Stream.generate(() -> {
+                                        var left = RandomUtil.randomInt(length);
+                                        var right = RandomUtil.randomInt(left, length);
+                                        return Arguments.of(expected, actual, left, right);
+                                    }).limit(ITERATION_COUNT);
+                                });
+                    }).toArray(Arguments[]::new);
 
     private static int[] randomArray() {
         var size = RandomUtil.randomIntClosed(MIN_ARRAY_SIZE, MAX_ARRAY_SIZE);
@@ -38,23 +54,6 @@ public class NumArrayTest {
         }
         return array;
     }
-
-    public static final Arguments[] ARGUMENTS =
-            Stream.generate(NumArrayTest::randomArray)
-                .limit(RANDOM_ITERATION_COUNT)
-                .flatMap(numbers -> {
-                    var length = numbers.length;
-                    var expected = DEFAULT_FACTORY.create(numbers);
-                    return Arrays.stream(TEST_FACTORIES)
-                            .flatMap(factory -> {
-                                var actual = factory.create(numbers);
-                                return Stream.generate(() -> {
-                                    var left = RandomUtil.randomInt(length);
-                                    var right = RandomUtil.randomInt(left, length);
-                                    return Arguments.of(expected, actual, left, right);
-                                }).limit(ITERATION_COUNT);
-                            });
-                }).toArray(Arguments[]::new);
 
     @ParameterizedTest
     @FieldSource("ARGUMENTS")
